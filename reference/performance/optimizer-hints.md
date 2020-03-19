@@ -65,9 +65,9 @@ select /*+ QB_NAME(QB1) */ * from (select * from t) t1, (select * from t) t2;
 select /*+ HASH_JOIN(@sel_1 t1@sel_1, t3) */ * from (select t1.a, t1.b from t t1, t t2 where t1.a = t2.a) t1, t t3 where t1.b = t3.b;
 ```
 
-### SM_JOIN(t1_name [, tl_name ...])
+### MERGE_JOIN(t1_name [, tl_name ...])
 
-`SM_JOIN(t1_name [, tl_name ...])` 提示优化器对指定表使用 Sort Merge Join 算法。这个算法通常会占用更少的内存，但执行时间会更久。当数据量太大，或系统内存不足时，建议尝试使用。例如：
+`MERGE_JOIN(t1_name [, tl_name ...])` 提示优化器对指定表使用 Sort Merge Join 算法。这个算法通常会占用更少的内存，但执行时间会更久。当数据量太大，或系统内存不足时，建议尝试使用。例如：
 
 {{< copyable "sql" >}}
 
